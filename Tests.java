@@ -1,17 +1,51 @@
 //Sufhi Tatum
 
+import java.util.Scanner;
+
 public class Tests {
-    public static void main(String[] args) {
+    private double average;
+    private int count;
 
-        double test_score1 = 81.4;
-        double test_score2 = 93.7;
-        double test_score3 = 78.9;
+    // Default Constructor
+    public Tests() {
+        this.average = 0.0;
+        this.count = 0;
+    }
 
-        double average_score = (test_score1 + test_score2 + test_score3) / 3;
+    // Accessors
+    public double getAverageValue() {
+        return average;
+    }
 
-        System.out.println("Test score 1: " + test_score1+"%");
-        System.out.println("Test score 2: " + test_score2+"%");
-        System.out.println("Test score 3: " + test_score3+"%");
-        System.out.printf("Average score: %.1f%%",average_score);
+    public int getCount() {
+        return count;
+    }
+
+    // Method to collect scores
+    public void getAverage() {
+        Scanner scanner = new Scanner(System.in);
+        double sum = 0.0;
+        count = 0;
+
+        // Priming the loop
+        System.out.print("Enter test score (-1 to quit): ");
+        double score = scanner.nextDouble();
+
+        // Ends loop when -1 is entered
+        while (score != -1) {
+            sum += score;
+            count++;
+            System.out.print("Enter test score (-1 to quit): ");
+            score = scanner.nextDouble();
+        }
+
+        // Calculate average after loop finishes
+        average = sum / count;
+    }
+
+    //
+    @Override
+    public String toString() {
+        return String.format("The average of the %d scores entered is %.2f.", count, average);
     }
 }
