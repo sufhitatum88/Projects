@@ -6,6 +6,7 @@ public class Exam extends Assessment {
     private int numQuestions;
     private double pointsEach;
     private int numMissed;
+
     /**
      * Constructor sets up questions, missed questions, and
      * calculates the total score.
@@ -14,6 +15,10 @@ public class Exam extends Assessment {
      * @param missed The number of questions missed
      */
     public Exam(int questions, int missed) {
+        if (questions <= 0) {
+            throw new IllegalArgumentException("Number of questions cannot be zero.");
+        }
+
         this.numQuestions = questions;
         this.numMissed = missed;
 
@@ -32,25 +37,19 @@ public class Exam extends Assessment {
      *
      * @return The points each question is worth
      */
-    public double getPointsEach() {
-        return this.pointsEach;
-    }
+    public double getPointsEach() { return this.pointsEach; }
 
     /**
      * getNumQuestions method returns numQuestions.
      *
      * @return The total number of questions
      */
-    public int getNumQuestions() {
-        return this.numQuestions;
-    }
+    public int getNumQuestions() { return this.numQuestions; }
 
     /**
      * getNumMissed method returns numMissed.
      *
      * @return The number of questions missed
      */
-    public int getNumMissed() {
-        return this.numMissed;
-    }
+    public int getNumMissed() { return this.numMissed; }
 }
